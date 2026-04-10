@@ -8,7 +8,7 @@
     <script src="assets/js/preview.js" defer></script>
 </head>
 <body data-page="dashboard">
-<div class="app-shell app-shell--drawer-open" data-drawer-shell>
+<div class="app-shell" data-drawer-shell>
     <aside class="sidebar">
         <div class="sidebar__account">
             <div class="sidebar__account-info">
@@ -32,21 +32,6 @@
     </aside>
 
     <main class="app-main app-main--dashboard">
-        <div class="app-alert-pop" role="alert" aria-live="polite">
-            <strong>알림</strong>
-            <p>디자인 프리뷰 전용 화면입니다. 장치를 클릭하면 우측 설정 패널 내용만 바뀝니다.</p>
-            <button type="button" class="app-alert-pop__close" aria-label="닫기">확인</button>
-        </div>
-
-        <div class="weather-alert-stack">
-            <article class="weather-alert-card" data-dismiss-alert>
-                <strong>남용인 눈 예정</strong>
-                <p>11:00 진눈깨비 예보, 예열 시작</p>
-                <small>경기 용인시 처인구 남사읍 북리 128-4</small>
-                <button type="button" class="weather-alert-card__close" aria-label="닫기">X</button>
-            </article>
-        </div>
-
         <section class="camera-board__toolbar camera-board__toolbar--top">
             <section class="camera-board__tool-card">
                 <form class="camera-filter-form" data-preview-message="정적 프리뷰에서는 검색 조건만 시각적으로 확인합니다.">
@@ -288,7 +273,7 @@
     </main>
 </div>
 
-<div class="modal modal--drawer is-open" id="operation-mode-modal">
+<div class="modal modal--drawer" id="operation-mode-modal">
     <div class="modal__backdrop modal__backdrop--solid" data-close-modal></div>
     <div class="modal__panel modal__panel--wide">
         <div class="modal__header">
