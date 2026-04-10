@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장치 상세 | 블랙아이스 관제 UI Preview</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/preview.js" defer></script>
+</head>
+<body data-page="devices">
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="sidebar__account">
+            <div class="sidebar__account-info"><strong>UI Preview Admin</strong><span>admin</span></div>
+            <a href="index.html" class="button button--ghost button--sidebar">로그아웃</a>
+        </div>
+        <div class="sidebar__brand"><span class="sidebar__eyebrow">Black Ice MVP</span><strong>관제 관리자</strong></div>
+        <nav class="sidebar__nav">
+            <a href="dashboard.html" data-nav="dashboard">대시보드</a>
+            <a href="devices.html" data-nav="devices">장치관리</a>
+            <a href="users.html" data-nav="users">사용자관리</a>
+        </nav>
+        <div class="sidebar__footer"><p>상세 화면은 날씨, 지도, PLC 블록 배치를 검토하기 위한 목업입니다.</p></div>
+    </aside>
+
+    <main class="app-main">
+        <header class="topbar">
+            <div>
+                <p class="topbar__label">Operations Console</p>
+                <h1>장치 상세</h1>
+                <p class="topbar__subtitle">장치 상세 상태와 placeholder 확장 영역을 함께 확인합니다.</p>
+            </div>
+            <div class="topbar__actions">
+                <a href="device-form.html" class="button button--primary">수정</a>
+                <a href="devices.html" class="button button--ghost">목록으로</a>
+            </div>
+        </header>
+
+        <section class="dashboard-grid">
+            <article class="panel">
+                <div class="panel__header">
+                    <div>
+                        <p class="panel__eyebrow">Device Overview</p>
+                        <h2>남용인</h2>
+                    </div>
+                </div>
+                <dl class="detail-grid">
+                    <div><dt>장치 ID</dt><dd>BI-DEVICE-001</dd></div>
+                    <div><dt>주소</dt><dd>경기 용인시 처인구 남사읍 북리 128-4</dd></div>
+                    <div><dt>위도</dt><dd>37.126842</dd></div>
+                    <div><dt>경도</dt><dd>127.189214</dd></div>
+                    <div><dt>상태</dt><dd>정상</dd></div>
+                    <div><dt>동작상태</dt><dd>ON</dd></div>
+                    <div><dt>시스템 운전 모드</dt><dd>기상 기반 자동</dd></div>
+                    <div><dt>마지막 수신</dt><dd>2026-04-10 13:42</dd></div>
+                </dl>
+            </article>
+
+            <article class="panel">
+                <div class="panel__header"><div><p class="panel__eyebrow">Map</p><h2>지도</h2></div></div>
+                <div class="device-detail-map-wrap">
+                    <div class="device-detail-map">
+                        <div class="device-detail-map__fallback">
+                            <strong>남용인</strong>
+                            <p>경기 용인시 처인구 남사읍 북리 128-4</p>
+                        </div>
+                    </div>
+                    <div class="device-detail-map__meta">
+                        <strong>남용인</strong>
+                        <p>경기 용인시 처인구 남사읍 북리 128-4</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel panel--weather-board panel--weather-detail">
+                <div class="panel__header">
+                    <div>
+                        <p class="panel__eyebrow">Weather</p>
+                        <h2>날씨</h2>
+                        <p class="panel__subtitle">경기 용인시 처인구 남사읍 북리 128-4</p>
+                    </div>
+                    <div class="weather-detail__header-meta">
+                        <div class="weather-detail__header-actions">
+                            <span class="status-chip status-chip--running">실시간 예보</span>
+                            <button type="button" class="button button--ghost">갱신</button>
+                        </div>
+                        <p class="weather-detail__updated">마지막 조회<strong>2026-04-10 13:40</strong></p>
+                    </div>
+                </div>
+                <section class="weather-detail__summary">
+                    <div class="weather-detail__summary-copy">
+                        <p class="panel__eyebrow">Current Condition</p>
+                        <h3>현재 기온 -2℃ / 도로 표면 빙결 주의</h3>
+                        <p>장치 현장 센서값과 예보 정보를 한 눈에 확인할 수 있도록 정리했습니다.</p>
+                    </div>
+                    <div class="weather-detail__metrics">
+                        <article class="weather-metric-card"><span>현장온도</span><strong>-3.5℃</strong></article>
+                        <article class="weather-metric-card"><span>현장습도</span><strong>72%</strong></article>
+                        <article class="weather-metric-card"><span>대기온도</span><strong>-2.1℃</strong></article>
+                        <article class="weather-metric-card weather-metric-card--signal"><span>날씨 수신</span><strong><span class="signal signal--on"></span><b>정상</b></strong></article>
+                    </div>
+                </section>
+                <div class="device-weather-layout">
+                    <section class="weather-section weather-section--hourly-board">
+                        <div class="weather-section__header"><h3>시간별 예보</h3><span>현재 시각부터 오늘 24시까지</span></div>
+                        <div class="weather-hourly-scroll">
+                            <div class="weather-hourly-strip">
+                                <article class="weather-hourly-card"><div class="weather-hourly-card__top"><strong>14:00</strong><span class="weather-icon weather-hourly-card__icon weather-icon--snow">❄</span></div><span>-2℃</span><em>습설 가능성</em><small>강수량 1mm</small><small>강수확률 60%</small></article>
+                                <article class="weather-hourly-card"><div class="weather-hourly-card__top"><strong>15:00</strong><span class="weather-icon weather-hourly-card__icon weather-icon--cloudy">☁</span></div><span>-1℃</span><em>흐림</em><small>강수량 -</small><small>강수확률 20%</small></article>
+                                <article class="weather-hourly-card"><div class="weather-hourly-card__top"><strong>16:00</strong><span class="weather-icon weather-hourly-card__icon weather-icon--rain">☂</span></div><span>0℃</span><em>약한 비</em><small>강수량 1mm</small><small>강수확률 55%</small></article>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="weather-section weather-section--daily-board">
+                        <div class="weather-section__header"><h3>일별 예보</h3><span>설정 위치 기준 5일치</span></div>
+                        <div class="weather-daily-strip">
+                            <article class="weather-daily-card"><div class="weather-daily-card__day"><strong>04/10</strong><span>흐리고 눈</span></div><div class="weather-daily-card__summary"><span class="weather-icon weather-daily-card__icon weather-icon--snow">❄</span><div class="weather-daily-card__meta"><b>-4℃ / 1℃</b><small>강수량 1~4mm</small></div></div></article>
+                            <article class="weather-daily-card"><div class="weather-daily-card__day"><strong>04/11</strong><span>구름 많음</span></div><div class="weather-daily-card__summary"><span class="weather-icon weather-daily-card__icon weather-icon--cloudy">☁</span><div class="weather-daily-card__meta"><b>-2℃ / 5℃</b><small>강수량 -</small></div></div></article>
+                        </div>
+                    </section>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="panel__header"><div><p class="panel__eyebrow">PLC Snapshot</p><h2>PLC 상태 / 계측</h2></div></div>
+                <div class="plc-detail">
+                    <div class="plc-detail__summary">
+                        <article class="plc-detail__summary-card"><span>연결 상태</span><strong>정상</strong></article>
+                        <article class="plc-detail__summary-card"><span>현재 운전 모드</span><strong>자동</strong></article>
+                        <article class="plc-detail__summary-card"><span>동작 여부</span><strong>ON</strong></article>
+                        <article class="plc-detail__summary-card"><span>트립 여부</span><strong>정상</strong></article>
+                    </div>
+                    <dl class="detail-grid plc-detail__metrics">
+                        <div><dt>PLC 모델</dt><dd>XGT-2000</dd></div>
+                        <div><dt>PLC 수신 시각</dt><dd>2026-04-10 13:41:09</dd></div>
+                        <div><dt>상태 요청</dt><dd>정상</dd></div>
+                        <div><dt>정보 요청</dt><dd>정상</dd></div>
+                        <div><dt>V12</dt><dd>221.4</dd></div>
+                        <div><dt>V23</dt><dd>220.8</dd></div>
+                        <div><dt>A1</dt><dd>8.4</dd></div>
+                        <div><dt>주파수</dt><dd>59.98</dd></div>
+                    </dl>
+                </div>
+                <p class="detail-note">램프 구간 음영부 결빙이 잦아 예열 시간을 30분으로 유지합니다.</p>
+            </article>
+        </section>
+    </main>
+</div>
+</body>
+</html>

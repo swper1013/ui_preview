@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대시보드 | 블랙아이스 관제 UI Preview</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/preview.js" defer></script>
+</head>
+<body data-page="dashboard">
+<div class="app-shell app-shell--drawer-open" data-drawer-shell>
+    <aside class="sidebar">
+        <div class="sidebar__account">
+            <div class="sidebar__account-info">
+                <strong>UI Preview Admin</strong>
+                <span>admin</span>
+            </div>
+            <a href="index.html" class="button button--ghost button--sidebar">로그아웃</a>
+        </div>
+        <div class="sidebar__brand">
+            <span class="sidebar__eyebrow">Black Ice MVP</span>
+            <strong>관제 관리자</strong>
+        </div>
+        <nav class="sidebar__nav">
+            <a href="dashboard.html" data-nav="dashboard">대시보드</a>
+            <a href="devices.html" data-nav="devices">장치관리</a>
+            <a href="users.html" data-nav="users">사용자관리</a>
+        </nav>
+        <div class="sidebar__footer">
+            <p>PR 검토용 프리뷰입니다. 카드 선택, 모달 전환, 예보 토글만 목업 동작합니다.</p>
+        </div>
+    </aside>
+
+    <main class="app-main app-main--dashboard">
+        <div class="app-alert-pop" role="alert" aria-live="polite">
+            <strong>알림</strong>
+            <p>디자인 프리뷰 전용 화면입니다. 장치를 클릭하면 우측 설정 패널 내용만 바뀝니다.</p>
+            <button type="button" class="app-alert-pop__close" aria-label="닫기">확인</button>
+        </div>
+
+        <div class="weather-alert-stack">
+            <article class="weather-alert-card" data-dismiss-alert>
+                <strong>남용인 눈 예정</strong>
+                <p>11:00 진눈깨비 예보, 예열 시작</p>
+                <small>경기 용인시 처인구 남사읍 북리 128-4</small>
+                <button type="button" class="weather-alert-card__close" aria-label="닫기">X</button>
+            </article>
+        </div>
+
+        <section class="camera-board__toolbar camera-board__toolbar--top">
+            <section class="camera-board__tool-card">
+                <form class="camera-filter-form" data-preview-message="정적 프리뷰에서는 검색 조건만 시각적으로 확인합니다.">
+                    <label class="form-field">
+                        <span>장치 이름 검색</span>
+                        <input type="text" value="남용인" placeholder="장치 이름 입력">
+                    </label>
+                    <label class="form-field">
+                        <span>상태 필터</span>
+                        <select>
+                            <option selected>전체</option>
+                            <option>작동중</option>
+                            <option>정상</option>
+                            <option>꺼짐</option>
+                            <option>통신이상</option>
+                        </select>
+                    </label>
+                    <button type="submit" class="button button--ghost">검색</button>
+                </form>
+            </section>
+
+            <section class="camera-board__tool-card camera-board__tool-card--stats">
+                <div class="camera-board__header-actions">
+                    <div class="stats-grid stats-grid--compact stats-grid--inline">
+                        <button type="button" class="stat-card stat-card--compact" data-modal-target="all-devices-modal">
+                            <span>전체 장치</span>
+                            <strong>18</strong>
+                        </button>
+                        <button type="button" class="stat-card stat-card--compact stat-card--running" data-modal-target="running-devices-modal">
+                            <span>작동중 장치</span>
+                            <strong>6</strong>
+                        </button>
+                        <button type="button" class="stat-card stat-card--compact stat-card--ice" data-modal-target="icing-devices-modal">
+                            <span>빙결예상 장치</span>
+                            <strong>3</strong>
+                        </button>
+                        <button type="button" class="stat-card stat-card--compact stat-card--alert" data-modal-target="offline-devices-modal">
+                            <span>연결이상발생</span>
+                            <strong>2</strong>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <article class="panel panel--weather-board panel--weather-board--compact">
+            <div class="panel__header">
+                <div class="weather-board__title-line">
+                    <span>선택 장치 :</span>
+                    <strong data-selected-device-name>남용인</strong>
+                </div>
+                <div class="weather-board__actions">
+                    <form class="weather-inline-setting-form weather-inline-setting-form--header" data-preview-message="갱신 주기 저장은 프리뷰에서 동작하지 않습니다.">
+                        <label class="weather-inline-setting-form__field">
+                            <span>PLC 정보 갱신 주기</span>
+                            <select>
+                                <option>갱신안함</option>
+                                <option selected>30분마다</option>
+                                <option>60분마다</option>
+                            </select>
+                        </label>
+                        <button type="submit" class="button button--ghost">갱신 주기 저장</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="weather-board-layout">
+                <section class="weather-section weather-section--status-board">
+                    <div class="weather-section__header">
+                        <h3>상태</h3>
+                        <span data-selected-device-summary>선택 장치 상태</span>
+                    </div>
+                    <div class="weather-device-status-board">
+                        <div class="weather-device-status-summary">
+                            <article class="weather-device-summary-card">
+                                <span>연결 상태</span>
+                                <strong><i class="signal signal--large signal--on"></i></strong>
+                            </article>
+                            <article class="weather-device-summary-card">
+                                <span>현재 운전 모드</span>
+                                <strong data-selected-device-plc>자동 운전</strong>
+                            </article>
+                            <article class="weather-device-summary-card">
+                                <span>온도</span>
+                                <strong data-selected-device-temperature>-3.5℃</strong>
+                            </article>
+                            <article class="weather-device-summary-card">
+                                <span>습도</span>
+                                <strong data-selected-device-humidity>72%</strong>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="weather-section weather-section--forecast-board">
+                    <div class="weather-section__header">
+                        <div class="weather-forecast-switch">
+                            <button type="button" class="button weather-forecast-switch__button is-active" data-forecast-view="hourly">시간별 예보</button>
+                            <button type="button" class="button weather-forecast-switch__button button--ghost" data-forecast-view="daily">일별 예보</button>
+                        </div>
+                        <div class="weather-forecast-meta">
+                            <p class="weather-board__location-note weather-board__location-note--inline">
+                                <span>장치 주소 :</span>
+                                <strong data-selected-device-address>경기 용인시 처인구 남사읍 북리 128-4</strong>
+                            </p>
+                            <p class="weather-board__updated weather-board__updated--inline">
+                                <span>날씨 수신 시간 :</span>
+                                <strong data-selected-device-refresh>2026-04-10 13:40</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="weather-forecast-panel" data-forecast-panel="hourly">
+                        <div class="weather-hourly-scroll">
+                            <div class="weather-hourly-strip">
+                                <article class="weather-hourly-card">
+                                    <div class="weather-hourly-card__top"><strong>14:00</strong><span class="weather-icon weather-hourly-card__icon weather-icon--snow">❄</span></div>
+                                    <span>-2℃</span><em>습설 가능성</em><small>강수량 1mm</small><small>강수확률 60%</small>
+                                </article>
+                                <article class="weather-hourly-card">
+                                    <div class="weather-hourly-card__top"><strong>15:00</strong><span class="weather-icon weather-hourly-card__icon weather-icon--cloudy">☁</span></div>
+                                    <span>-1℃</span><em>흐림</em><small>강수량 -</small><small>강수확률 20%</small>
+                                </article>
+                                <article class="weather-hourly-card">
+                                    <div class="weather-hourly-card__top"><strong>16:00</strong><span class="weather-icon weather-hourly-card__icon weather-icon--rain">☂</span></div>
+                                    <span>0℃</span><em>약한 비</em><small>강수량 1mm</small><small>강수확률 55%</small>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weather-forecast-panel is-hidden" data-forecast-panel="daily">
+                        <div class="weather-daily-strip">
+                            <article class="weather-daily-card">
+                                <div class="weather-daily-card__day"><strong>04/10</strong><span>흐리고 눈</span></div>
+                                <div class="weather-daily-card__summary"><span class="weather-icon weather-daily-card__icon weather-icon--snow">❄</span><div class="weather-daily-card__meta"><b>-4℃ / 1℃</b><small>강수량 1~4mm</small></div></div>
+                            </article>
+                            <article class="weather-daily-card">
+                                <div class="weather-daily-card__day"><strong>04/11</strong><span>구름 많음</span></div>
+                                <div class="weather-daily-card__summary"><span class="weather-icon weather-daily-card__icon weather-icon--cloudy">☁</span><div class="weather-daily-card__meta"><b>-2℃ / 5℃</b><small>강수량 -</small></div></div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="weather-section weather-section--map-board">
+                    <div class="weather-section__header">
+                        <h3>위치</h3>
+                        <span>선택 장치 위치</span>
+                    </div>
+                    <div class="dashboard-weather-map-wrap">
+                        <div class="dashboard-weather-map">
+                            <div class="device-detail-map__fallback">
+                                <strong data-selected-device-name>남용인</strong>
+                                <p data-selected-device-address>경기 용인시 처인구 남사읍 북리 128-4</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </article>
+
+        <section class="panel panel--camera-board">
+            <div class="camera-grid">
+                <article class="camera-card is-active" data-device-card data-device-name="남용인">
+                    <div class="camera-card__header">
+                        <strong>1번 남용인</strong>
+                        <p>경기 용인시 처인구 남사읍 북리 128-4</p>
+                    </div>
+                    <a class="camera-card__image" href="#" data-modal-target="operation-mode-modal"
+                       data-device-name="남용인" data-device-address="경기 용인시 처인구 남사읍 북리 128-4"
+                       data-device-mode="자동 운전" data-device-runtime="운전중 14분" data-device-summary="선택 장치 상태"
+                       data-device-temperature="-3.5℃" data-device-humidity="72%" data-device-plc="자동 운전"
+                       data-device-refresh="2026-04-10 13:40">
+                        <div class="camera-card__badges"><span class="camera-card__badge">열선</span></div>
+                        <div class="camera-card__placeholder"><strong>남용인 CCTV</strong><p>실시간 이미지 placeholder</p></div>
+                    </a>
+                    <div class="camera-card__meta">
+                        <span class="camera-chip camera-chip--ok">접속정상</span>
+                        <span class="camera-chip camera-chip--active">작동중</span>
+                        <span class="camera-chip camera-chip--ice-risk">빙결예상</span>
+                    </div>
+                </article>
+
+                <article class="camera-card" data-device-card data-device-name="백암 교차로">
+                    <div class="camera-card__header">
+                        <strong>2번 백암 교차로</strong>
+                        <p>경기 용인시 처인구 백암면 백암리 391-2</p>
+                    </div>
+                    <a class="camera-card__image" href="#" data-modal-target="operation-mode-modal"
+                       data-device-name="백암 교차로" data-device-address="경기 용인시 처인구 백암면 백암리 391-2"
+                       data-device-mode="수동 ON" data-device-runtime="운전중 06분" data-device-summary="테스트 장치 상태"
+                       data-device-temperature="-1.1℃" data-device-humidity="64%" data-device-plc="수동 운전"
+                       data-device-refresh="2026-04-10 13:36">
+                        <div class="camera-card__badges"><span class="camera-card__badge">열선</span></div>
+                        <div class="camera-card__placeholder"><strong>백암 교차로 CCTV</strong><p>실시간 이미지 placeholder</p></div>
+                    </a>
+                    <div class="camera-card__meta">
+                        <span class="camera-chip camera-chip--ok">접속정상</span>
+                        <span class="camera-chip camera-chip--active">작동중</span>
+                        <span class="camera-chip camera-chip--ice-safe">빙결없음</span>
+                    </div>
+                </article>
+
+                <article class="camera-card" data-device-card data-device-name="양지 터널">
+                    <div class="camera-card__header">
+                        <strong>3번 양지 터널</strong>
+                        <p>경기 용인시 처인구 양지면 주북리 611</p>
+                    </div>
+                    <a class="camera-card__image" href="#" data-modal-target="operation-mode-modal"
+                       data-device-name="양지 터널" data-device-address="경기 용인시 처인구 양지면 주북리 611"
+                       data-device-mode="정지" data-device-runtime="대기중" data-device-summary="선택 장치 상태"
+                       data-device-temperature="1.8℃" data-device-humidity="49%" data-device-plc="정지"
+                       data-device-refresh="2026-04-10 13:28">
+                        <div class="camera-card__badges"><span class="camera-card__badge">열선</span></div>
+                        <div class="camera-card__placeholder"><strong>양지 터널 CCTV</strong><p>실시간 이미지 placeholder</p></div>
+                    </a>
+                    <div class="camera-card__meta">
+                        <span class="camera-chip camera-chip--bad">접속이상</span>
+                        <span class="camera-chip camera-chip--idle">정지</span>
+                        <span class="camera-chip camera-chip--ice-safe">빙결없음</span>
+                    </div>
+                </article>
+
+                <article class="camera-card camera-card--empty">
+                    <div class="camera-card__header"><strong>4번 등록 없음</strong><p>장치를 등록하면 이 슬롯에 배치됩니다.</p></div>
+                    <div class="camera-card__image camera-card__image--empty"><span class="camera-card__badge">대기</span><div class="camera-card__placeholder camera-card__placeholder--empty"><strong>등록 없음</strong><p>새 장치를 등록하면 이 슬롯에 자동 배치됩니다.</p></div></div>
+                    <div class="camera-card__meta"><span class="camera-chip camera-chip--empty">미등록</span></div>
+                </article>
+            </div>
+
+            <div class="camera-board__footer">
+                <div class="camera-board__result"><strong>18</strong><span>개 장치 검색 결과</span></div>
+                <nav class="pagination">
+                    <a class="page-link is-active" href="#">1</a>
+                    <a class="page-link" href="#">2</a>
+                    <a class="page-link" href="#">다음</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div class="modal modal--drawer is-open" id="operation-mode-modal">
+    <div class="modal__backdrop modal__backdrop--solid" data-close-modal></div>
+    <div class="modal__panel modal__panel--wide">
+        <div class="modal__header">
+            <div>
+                <h3>운전모드 설정</h3>
+                <p class="detail-note" data-selected-device-address>경기 용인시 처인구 남사읍 북리 128-4</p>
+            </div>
+            <div class="modal__actions">
+                <button type="button" class="button button--ghost" data-close-modal>닫기</button>
+            </div>
+        </div>
+
+        <div class="modal-mode-layout">
+            <section class="modal-side-stack">
+                <section class="modal-setting-card">
+                    <div class="modal-mode-aside__header">
+                        <p class="panel__eyebrow">Mode Control</p>
+                        <h4><span data-selected-device-name>남용인</span> 운전 제어</h4>
+                    </div>
+
+                    <div class="modal-mode-controls">
+                        <form class="inline-form inline-form--tight" data-preview-message="프리뷰에서는 실제 제어 명령이 전송되지 않습니다.">
+                            <div class="modal-mode-picker">
+                                <div class="help-inline-label"><span>선택 장치 기준 모드 설정</span></div>
+                                <div class="modal-mode-picker__buttons">
+                                    <button type="button" class="button mode-option-button button--primary is-active" data-mode-option="AUTO">자동</button>
+                                    <button type="button" class="button mode-option-button button--ghost" data-mode-option="MANUAL">수동</button>
+                                    <button type="button" class="button mode-option-button button--ghost" data-mode-option="TIMER">타이머</button>
+                                    <button type="button" class="button mode-option-button button--ghost" data-mode-option="STOP">정지</button>
+                                </div>
+                            </div>
+
+                            <div class="modal-auto-options" id="autoModeOptions">
+                                <label class="modal-checkbox"><input type="checkbox" checked><span>기상 자동</span></label>
+                                <label class="modal-checkbox"><input type="checkbox"><span>온습도 자동</span></label>
+                            </div>
+
+                            <button type="submit" class="button button--primary">모드 저장</button>
+                        </form>
+
+                        <div class="mode-actions is-hidden" id="manualControlActions">
+                            <button type="button" class="button manual-state-button button--accent is-active" data-manual-state="ON">수동 ON</button>
+                            <button type="button" class="button manual-state-button button--ghost" data-manual-state="OFF">수동 OFF</button>
+                        </div>
+
+                        <div class="modal-mode-status">
+                            <article class="modal-mode-status-card"><span>연결 상태</span><strong><i class="signal signal--on"></i></strong></article>
+                            <article class="modal-mode-status-card"><span>날씨 수신</span><strong><i class="signal signal--on"></i></strong></article>
+                            <article class="modal-mode-status-card"><span>설정 모드</span><strong data-selected-device-mode>자동 운전</strong></article>
+                            <article class="modal-mode-status-card"><span>현재 운전</span><strong data-selected-device-runtime>운전중 14분</strong></article>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="modal-setting-card" id="preheatSettingCard">
+                    <div class="modal-mode-aside__header">
+                        <p class="panel__eyebrow">Preheat Setting</p>
+                        <h4>예열 시간 설정</h4>
+                    </div>
+                    <form class="inline-form inline-form--tight" data-preview-message="예열 시간은 프리뷰에서 저장되지 않습니다.">
+                        <label class="form-field">
+                            <span>예열 시간(분)</span>
+                            <select>
+                                <option>0분</option>
+                                <option selected>30분</option>
+                                <option>60분</option>
+                                <option>90분</option>
+                            </select>
+                        </label>
+                        <button type="submit" class="button button--ghost">예열 시간 저장</button>
+                    </form>
+                </section>
+
+                <section class="modal-setting-card">
+                    <div class="modal-mode-aside__header">
+                        <p class="panel__eyebrow">Time Setting</p>
+                        <h4>시간 설정</h4>
+                    </div>
+                    <div class="modal-setting-stack">
+                        <div class="modal-subsetting" data-mode-panel="manual">
+                            <form class="inline-form inline-form--tight" data-preview-message="수동 시간 설정은 프리뷰에서 저장되지 않습니다.">
+                                <label class="form-field"><span>가동 유지 시간</span><select><option>30분</option><option selected>60분</option><option>90분</option></select></label>
+                                <label class="form-field"><span>딜레이 시간</span><select><option selected>0분</option><option>30분</option><option>60분</option></select></label>
+                                <button type="submit" class="button button--ghost">작동 시간 저장</button>
+                            </form>
+                        </div>
+
+                        <div class="modal-subsetting is-hidden" data-mode-panel="auto">
+                            <form class="inline-form inline-form--tight" data-preview-message="자동 모드 시간 설정은 프리뷰에서 저장되지 않습니다.">
+                                <label class="form-field"><span>정지 딜레이 시간</span><select><option selected>0분</option><option>30분</option><option>60분</option></select></label>
+                                <button type="submit" class="button button--ghost">딜레이 저장</button>
+                            </form>
+                        </div>
+
+                        <div class="modal-subsetting is-hidden" data-mode-panel="timer">
+                            <form class="inline-form inline-form--tight" data-preview-message="타이머 설정은 프리뷰에서 저장되지 않습니다.">
+                                <label class="form-field"><span>타이머 시작시간</span><select><option selected>06:00</option><option>06:30</option><option>07:00</option></select></label>
+                                <label class="form-field"><span>가동시간</span><select><option>30분</option><option selected>60분</option></select></label>
+                                <label class="form-field"><span>중단시간</span><select><option selected>30분</option><option>60분</option></select></label>
+                                <label class="form-field"><span>타이머 종료시간</span><select><option>08:00</option><option selected>09:00</option></select></label>
+                                <button type="submit" class="button button--ghost">타이머 저장</button>
+                            </form>
+                        </div>
+
+                        <div class="modal-subsetting is-hidden" data-mode-panel="stop">
+                            <div class="modal-stop-note">
+                                <strong>정지 모드</strong>
+                                <p>정지를 저장하면 선택 장치에 OFF 명령이 전송되는 흐름을 가정합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="all-devices-modal">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+        <div class="modal__header"><h3>전체 장치</h3><button type="button" class="button button--ghost" data-close-modal>닫기</button></div>
+        <div class="modal__body"><ul class="modal-list"><li><div><strong>남용인</strong><span>정상</span></div><a href="device-detail.html" class="button button--ghost">상세</a></li><li><div><strong>백암 교차로</strong><span>정상</span></div><a href="device-detail.html" class="button button--ghost">상세</a></li><li><div><strong>양지 터널</strong><span>통신이상</span></div><a href="device-detail.html" class="button button--ghost">상세</a></li></ul></div>
+    </div>
+</div>
+
+<div class="modal" id="running-devices-modal">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+        <div class="modal__header"><h3>작동중 장치</h3><button type="button" class="button button--ghost" data-close-modal>닫기</button></div>
+        <div class="modal__body"><ul class="modal-list"><li><div><strong>남용인</strong><span>자동 운전</span></div><a href="device-detail.html" class="button button--ghost">상세</a></li><li><div><strong>백암 교차로</strong><span>수동 ON</span></div><a href="device-detail.html" class="button button--ghost">상세</a></li></ul></div>
+    </div>
+</div>
+
+<div class="modal" id="icing-devices-modal">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+        <div class="modal__header"><h3>빙결예상 장치</h3><button type="button" class="button button--ghost" data-close-modal>닫기</button></div>
+        <div class="modal__body"><ul class="modal-list"><li><div><strong>남용인</strong><span>11:00 진눈깨비 예보</span></div><a href="device-detail.html" class="button button--ghost">상세</a></li><li><div><strong>북리 램프</strong><span>12:00 비/눈 예보</span></div><a href="device-detail.html" class="button button--ghost">상세</a></li></ul></div>
+    </div>
+</div>
+
+<div class="modal" id="offline-devices-modal">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+        <div class="modal__header"><h3>연결이상 장치</h3><button type="button" class="button button--ghost" data-close-modal>닫기</button></div>
+        <div class="modal__body"><ul class="modal-list"><li><div><strong>양지 터널</strong><span>PLC 응답 지연</span></div><a href="device-detail.html" class="button button--ghost">상세</a></li><li><div><strong>원삼 교량</strong><span>상태 수신 실패</span></div><a href="device-detail.html" class="button button--ghost">상세</a></li></ul></div>
+    </div>
+</div>
+</body>
+</html>

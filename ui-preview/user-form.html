@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 폼 | 블랙아이스 관제 UI Preview</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/preview.js" defer></script>
+</head>
+<body data-page="users">
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="sidebar__account">
+            <div class="sidebar__account-info"><strong>UI Preview Admin</strong><span>admin</span></div>
+            <a href="index.html" class="button button--ghost button--sidebar">로그아웃</a>
+        </div>
+        <div class="sidebar__brand"><span class="sidebar__eyebrow">Black Ice MVP</span><strong>관제 관리자</strong></div>
+        <nav class="sidebar__nav">
+            <a href="dashboard.html" data-nav="dashboard">대시보드</a>
+            <a href="devices.html" data-nav="devices">장치관리</a>
+            <a href="users.html" data-nav="users">사용자관리</a>
+        </nav>
+        <div class="sidebar__footer"><p>관리자 폼도 기존 form-grid 구조와 동일한 폭 기준으로 맞췄습니다.</p></div>
+    </aside>
+
+    <main class="app-main">
+        <header class="topbar">
+            <div>
+                <p class="topbar__label">Operations Console</p>
+                <h1>관리자 등록</h1>
+                <p class="topbar__subtitle">관리자 계정은 공개 회원가입 없이 내부에서만 관리합니다.</p>
+            </div>
+            <div class="topbar__actions">
+                <a href="users.html" class="button button--ghost">목록으로</a>
+            </div>
+        </header>
+
+        <section class="panel panel--narrow">
+            <div class="panel__header">
+                <div>
+                    <p class="panel__eyebrow">Admin Form</p>
+                    <h2>관리자 등록</h2>
+                </div>
+            </div>
+
+            <form class="form-grid" data-preview-message="관리자 저장은 프리뷰에서 동작하지 않습니다.">
+                <label class="form-field">
+                    <span>아이디</span>
+                    <input type="text" value="ops.yongin" placeholder="admin02">
+                </label>
+
+                <label class="form-field">
+                    <span>이름</span>
+                    <input type="text" value="용인 관제" placeholder="홍길동">
+                </label>
+
+                <label class="form-field">
+                    <span>비밀번호</span>
+                    <input type="password" value="admin123" placeholder="admin123">
+                </label>
+
+                <label class="form-field">
+                    <span>상태</span>
+                    <select>
+                        <option selected>활성</option>
+                        <option>비활성</option>
+                    </select>
+                </label>
+
+                <div class="form-actions form-field--full">
+                    <button type="submit" class="button button--primary">관리자 저장</button>
+                    <a href="users.html" class="button button--ghost">취소</a>
+                </div>
+            </form>
+        </section>
+    </main>
+</div>
+</body>
+</html>

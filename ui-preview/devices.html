@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장치관리 | 블랙아이스 관제 UI Preview</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/preview.js" defer></script>
+</head>
+<body data-page="devices">
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="sidebar__account">
+            <div class="sidebar__account-info"><strong>UI Preview Admin</strong><span>admin</span></div>
+            <a href="index.html" class="button button--ghost button--sidebar">로그아웃</a>
+        </div>
+        <div class="sidebar__brand"><span class="sidebar__eyebrow">Black Ice MVP</span><strong>관제 관리자</strong></div>
+        <nav class="sidebar__nav">
+            <a href="dashboard.html" data-nav="dashboard">대시보드</a>
+            <a href="devices.html" data-nav="devices">장치관리</a>
+            <a href="users.html" data-nav="users">사용자관리</a>
+        </nav>
+        <div class="sidebar__footer"><p>실제 CRUD 대신 화면 배치와 표 구조만 유지한 프리뷰입니다.</p></div>
+    </aside>
+
+    <main class="app-main">
+        <header class="topbar">
+            <div>
+                <p class="topbar__label">Operations Console</p>
+                <h1>장치관리</h1>
+                <p class="topbar__subtitle">장치 등록, 조회, 수정, 삭제를 각각 페이지로 분리했습니다.</p>
+            </div>
+            <div class="topbar__actions">
+                <a href="dashboard.html" class="button button--ghost">대시보드 보기</a>
+            </div>
+        </header>
+
+        <section class="panel">
+            <div class="panel__header">
+                <div>
+                    <p class="panel__eyebrow">Device CRUD</p>
+                    <h2>장치 목록</h2>
+                </div>
+                <a href="device-form.html" class="button button--primary">장치 등록</a>
+            </div>
+
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                    <tr>
+                        <th>장치명</th>
+                        <th>장치 ID</th>
+                        <th>주소</th>
+                        <th>테스트</th>
+                        <th>상태</th>
+                        <th>동작상태</th>
+                        <th>수신</th>
+                        <th>마지막 수정</th>
+                        <th>관리</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><a href="device-detail.html">남용인</a></td>
+                        <td>BI-DEVICE-001</td>
+                        <td>경기 용인시 처인구 남사읍 북리 128-4</td>
+                        <td>실장치</td>
+                        <td>정상</td>
+                        <td><span class="status-chip status-chip--running">ON</span></td>
+                        <td><span class="signal signal--on"></span></td>
+                        <td>2026-04-10 13:42</td>
+                        <td class="table-actions">
+                            <a href="device-detail.html" class="button button--ghost">상세</a>
+                            <a href="device-form.html" class="button button--ghost">수정</a>
+                            <button type="button" class="button button--danger">삭제</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="device-detail.html">백암 교차로</a></td>
+                        <td>BI-DEVICE-002</td>
+                        <td>경기 용인시 처인구 백암면 백암리 391-2</td>
+                        <td>테스트</td>
+                        <td>정상</td>
+                        <td><span class="status-chip status-chip--running">ON</span></td>
+                        <td><span class="signal signal--on"></span></td>
+                        <td>2026-04-10 13:39</td>
+                        <td class="table-actions">
+                            <a href="device-detail.html" class="button button--ghost">상세</a>
+                            <a href="device-form.html" class="button button--ghost">수정</a>
+                            <button type="button" class="button button--danger">삭제</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="device-detail.html">양지 터널</a></td>
+                        <td>BI-DEVICE-003</td>
+                        <td>경기 용인시 처인구 양지면 주북리 611</td>
+                        <td>실장치</td>
+                        <td>통신이상</td>
+                        <td><span class="status-chip status-chip--idle">OFF</span></td>
+                        <td><span class="signal signal--off"></span></td>
+                        <td>2026-04-10 13:28</td>
+                        <td class="table-actions">
+                            <a href="device-detail.html" class="button button--ghost">상세</a>
+                            <a href="device-form.html" class="button button--ghost">수정</a>
+                            <button type="button" class="button button--danger">삭제</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 | 블랙아이스 관제 UI Preview</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/preview.js" defer></script>
+</head>
+<body class="login-body" data-page="login">
+<main class="login-shell">
+    <section class="login-panel">
+        <div class="login-panel__header">
+            <span class="login-panel__eyebrow">Black Ice Device Control</span>
+            <h1>관리자 로그인 프리뷰</h1>
+            <p>이 화면은 UI 확인용 정적 프리뷰입니다. 로그인 제출 시 대시보드 프리뷰로 이동합니다.</p>
+        </div>
+
+        <form class="login-form" data-login-form>
+            <label class="form-field">
+                <span>아이디</span>
+                <input type="text" value="admin" placeholder="admin">
+            </label>
+
+            <label class="form-field">
+                <span>비밀번호</span>
+                <input type="password" value="admin123" placeholder="admin123">
+            </label>
+
+            <button type="submit" class="button button--primary button--full">시스템 진입</button>
+        </form>
+    </section>
+
+    <section class="login-aside">
+        <div class="login-card">
+            <h2>프리뷰 범위</h2>
+            <ul>
+                <li><a href="dashboard.html">대시보드</a></li>
+                <li><a href="devices.html">장치 목록</a></li>
+                <li><a href="device-detail.html">장치 상세</a></li>
+                <li><a href="device-form.html">장치 등록 폼</a></li>
+                <li><a href="users.html">사용자 목록</a></li>
+                <li><a href="user-form.html">사용자 폼</a></li>
+            </ul>
+        </div>
+        <div class="login-card login-card--accent">
+            <p>현재 `src/main/resources/templates` 와 `static/css/app.css` 구조를 기준으로 화면만 떼어낸 버전입니다.</p>
+        </div>
+    </section>
+</main>
+</body>
+</html>
