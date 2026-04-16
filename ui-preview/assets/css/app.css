@@ -2818,8 +2818,9 @@ body.modal-open:has(.modal--drawer.is-open) {
     }
 
     .camera-board__tool-card--stats .stat-card--compact span {
-        font-size: 11px;
-        line-height: 1.3;
+        font-size: 10px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
     }
 
     .camera-board__tool-card--stats .stat-card--compact strong {
