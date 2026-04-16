@@ -2805,6 +2805,8 @@ body.modal-open:has(.modal--drawer.is-open) {
     }
 
     .panel--camera-board .stats-grid--inline {
+        display: grid;
+        width: 100%;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 8px;
     }
@@ -2823,6 +2825,11 @@ body.modal-open:has(.modal--drawer.is-open) {
     .panel--camera-board .stat-card--compact strong {
         margin-top: 6px;
         font-size: clamp(1.25rem, 4.5vw, 1.6rem);
+    }
+
+    .panel--camera-board .stats-grid--inline > .stat-card {
+        width: auto;
+        min-width: 0;
     }
 
     .weather-board__title-line,
