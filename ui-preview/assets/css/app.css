@@ -2887,8 +2887,79 @@ body.modal-open:has(.modal--drawer.is-open) {
         width: 100%;
     }
 
+    .topbar__actions {
+        display: grid;
+        gap: 10px;
+    }
+
     .button {
         width: 100%;
+    }
+
+    .preview-table {
+        min-width: 0;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    .preview-table thead {
+        display: none;
+    }
+
+    .preview-table,
+    .preview-table tbody,
+    .preview-table tr,
+    .preview-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .preview-table tbody {
+        display: grid;
+        gap: 12px;
+    }
+
+    .preview-table tr {
+        padding: 14px;
+        border: 1px solid rgba(154, 193, 220, 0.12);
+        border-radius: 18px;
+        background: rgba(8, 18, 31, 0.54);
+    }
+
+    .preview-table td {
+        padding: 0;
+        border: 0;
+    }
+
+    .preview-table td + td {
+        margin-top: 10px;
+    }
+
+    .preview-table td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 4px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .preview-table .table-actions {
+        display: grid;
+        gap: 8px;
+        margin-top: 12px;
+    }
+
+    .preview-table .table-actions::before {
+        margin-bottom: 6px;
+    }
+
+    .preview-table .table-actions .button {
+        width: 100%;
+    }
+
+    .preview-table td[data-label="수신"] span.signal {
+        display: inline-flex;
     }
 
     .sidebar {
