@@ -2754,6 +2754,11 @@ body.modal-open:has(.modal--drawer.is-open) {
         grid-template-columns: 1fr;
     }
 
+    .panel--camera-board .stats-grid--inline {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+    }
+
     .weather-hourly-card {
         width: 148px;
     }
@@ -2800,7 +2805,24 @@ body.modal-open:has(.modal--drawer.is-open) {
     }
 
     .panel--camera-board .stats-grid--inline {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .panel--camera-board .stat-card--compact {
+        min-height: 72px;
+        padding: 10px 12px;
+        border-radius: 16px;
+    }
+
+    .panel--camera-board .stat-card--compact span {
+        font-size: 11px;
+        line-height: 1.3;
+    }
+
+    .panel--camera-board .stat-card--compact strong {
+        margin-top: 6px;
+        font-size: clamp(1.25rem, 4.5vw, 1.6rem);
     }
 
     .weather-board__title-line,
