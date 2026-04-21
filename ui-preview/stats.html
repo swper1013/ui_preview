@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>작동 통계 | 블랙아이스 관제 UI Preview</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/stats.css">
+    <script src="assets/js/preview.js" defer></script>
+    <script src="assets/js/stats-preview.js" defer></script>
+</head>
+<body data-page="stats">
+<div class="app-shell" data-drawer-shell>
+    <aside class="sidebar">
+        <div class="sidebar__account">
+            <div class="sidebar__account-info">
+                <strong>UI Preview Admin</strong>
+                <span>admin</span>
+            </div>
+            <a href="index.html" class="button button--ghost button--sidebar">로그아웃</a>
+        </div>
+        <div class="sidebar__brand">
+            <span class="sidebar__eyebrow">Black Ice MVP</span>
+            <strong>관제 관리자</strong>
+        </div>
+        <nav class="sidebar__nav">
+            <a href="dashboard.html" data-nav="dashboard">대시보드</a>
+            <a href="devices.html" data-nav="devices">장치관리</a>
+            <a href="users.html" data-nav="users">사용자관리</a>
+            <a href="stats.html" data-nav="stats">작동통계</a>
+        </nav>
+        <div class="sidebar__footer">
+            <p></p>
+        </div>
+    </aside>
+
+    <main class="app-main app-main--dashboard">
+        <section class="stats-page">
+            <article class="panel stats-hero">
+                <div class="stats-hero__header">
+                    <div class="stats-hero__title">
+                        <p class="panel__eyebrow">Device Statistics</p>
+                        <h2>남용인</h2>
+                        <p>경기 용인시 처인구 원삼면 학일리 산 49-23</p>
+                    </div>
+                    <div class="stats-hero__actions">
+                        <div class="stats-hero__status">
+                            <span>PLC 수신</span>
+                            <strong>2026-04-21 14:15:31</strong>
+                        </div>
+                        <a class="button button--ghost" href="dashboard.html">대시보드로</a>
+                    </div>
+                </div>
+
+                <div class="stats-hero__meta">
+                    <div class="stats-hero__meta-card">
+                        <span>연결 상태</span>
+                        <strong>정상</strong>
+                    </div>
+                    <div class="stats-hero__meta-card">
+                        <span>운전 모드</span>
+                        <strong>자동 운전</strong>
+                    </div>
+                    <div class="stats-hero__meta-card">
+                        <span>갱신 주기</span>
+                        <strong>30분마다</strong>
+                    </div>
+                    <div class="stats-hero__meta-card">
+                        <span>날씨 수신</span>
+                        <strong>정상 수신</strong>
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel stats-controls">
+                <div class="stats-controls__range">
+                    <label class="form-field">
+                        <span>조회 시작</span>
+                        <input type="datetime-local" id="statsRangeStart">
+                    </label>
+                    <label class="form-field">
+                        <span>조회 종료</span>
+                        <input type="datetime-local" id="statsRangeEnd">
+                    </label>
+                    <div class="stats-range-preset">
+                        <span class="stats-controls__label">기간 프리셋</span>
+                        <div class="stats-range-preset__buttons" role="group" aria-label="기간 프리셋">
+                            <button type="button" class="button button--ghost stats-range-preset__button is-active" data-range-preset="1d">1일</button>
+                            <button type="button" class="button button--ghost stats-range-preset__button" data-range-preset="7d">7일</button>
+                            <button type="button" class="button button--ghost stats-range-preset__button" data-range-preset="30d">30일</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-controls__metric">
+                    <span class="stats-controls__label">메인 지표</span>
+                    <div class="stats-metric-switch" role="tablist" aria-label="메인 지표 선택">
+                        <button type="button" class="button stats-metric-switch__button is-active" data-stats-metric="voltage">상전압</button>
+                        <button type="button" class="button button--ghost stats-metric-switch__button" data-stats-metric="current">상전류</button>
+                        <button type="button" class="button button--ghost stats-metric-switch__button" data-stats-metric="power">유효전력</button>
+                    </div>
+                </div>
+            </article>
+
+            <section class="stats-chart-grid">
+                <article class="panel stats-chart-card stats-chart-card--main">
+                    <div class="stats-chart-card__header">
+                        <div>
+                            <p class="panel__eyebrow">Main Trend</p>
+                            <h2 id="statsMainChartTitle">상전압 추이</h2>
+                            <p class="stats-chart-card__subtitle">선택 기간 동안의 추이를 실시간 페이지와 동일한 장치 기준으로 시각화합니다.</p>
+                        </div>
+                        <div class="stats-chart-legend" id="statsMainLegend"></div>
+                    </div>
+                    <div class="stats-chart-card__canvas-wrap">
+                        <div class="stats-chart-shell">
+                            <div id="statsMainYAxis" class="stats-chart-yaxis" aria-hidden="true"></div>
+                            <div class="stats-chart-scroll">
+                                <svg id="statsMainChart" class="stats-chart" viewBox="0 0 920 280" preserveAspectRatio="none" aria-label="메인 통계 차트"></svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="panel stats-chart-card">
+                    <div class="stats-chart-card__header">
+                        <div>
+                            <p class="panel__eyebrow">Environment Trend</p>
+                            <h2>온습도 추이</h2>
+                            <p class="stats-chart-card__subtitle">온도와 습도를 하나의 차트에서 함께 확인합니다.</p>
+                        </div>
+                        <div class="stats-chart-legend" id="statsEnvLegend"></div>
+                    </div>
+                    <div class="stats-chart-card__canvas-wrap">
+                        <div class="stats-chart-shell">
+                            <div id="statsEnvYAxis" class="stats-chart-yaxis" aria-hidden="true"></div>
+                            <div class="stats-chart-scroll">
+                                <svg id="statsEnvChart" class="stats-chart" viewBox="0 0 920 240" preserveAspectRatio="none" aria-label="온습도 통계 차트"></svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </section>
+    </main>
+</div>
+
+<script>
+    window.deviceStatsPageState = {
+        deviceId: 15,
+        deviceName: "남용인",
+        deviceAddress: "경기 용인시 처인구 원삼면 학일리 산 49-23",
+        plcFetchedAt: "2026-04-21T14:15:31",
+        weatherFetchedAt: "2026-04-21T14:10:00",
+        voltage: {
+            v12: 2137.4,
+            v23: 33.0,
+            v31: 2187.2
+        },
+        current: {
+            a1: 16.4,
+            a2: 7.3,
+            a3: 12.8
+        },
+        activePower: 3599,
+        fieldTemperature: -3.5,
+        fieldHumidity: 72.0
+    };
+</script>
+</body>
+</html>
