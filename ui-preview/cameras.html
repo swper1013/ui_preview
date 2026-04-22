@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카메라 | 블랙아이스 관제 UI Preview</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/camera.css">
+    <script src="assets/js/preview.js" defer></script>
+    <script src="assets/js/camera-preview.js" defer></script>
+</head>
+<body data-page="cameras">
+<div class="app-shell" data-drawer-shell>
+    <aside class="sidebar">
+        <div class="sidebar__account">
+            <div class="sidebar__account-info">
+                <strong>UI Preview Admin</strong>
+                <span>admin</span>
+            </div>
+            <a href="index.html" class="button button--ghost button--sidebar">로그아웃</a>
+        </div>
+        <div class="sidebar__brand">
+            <span class="sidebar__eyebrow">Black Ice MVP</span>
+            <strong>관제 관리자</strong>
+        </div>
+        <nav class="sidebar__nav">
+            <a href="dashboard.html" data-nav="dashboard">대시보드</a>
+            <a href="devices.html" data-nav="devices">장치관리</a>
+            <a href="users.html" data-nav="users">사용자관리</a>
+            <a href="cameras.html" data-nav="cameras">카메라</a>
+            <a href="stats.html" data-nav="stats">작동통계</a>
+        </nav>
+        <div class="sidebar__footer">
+            <p></p>
+        </div>
+    </aside>
+
+    <main class="app-main">
+        <section class="camera-dashboard">
+            <article class="panel camera-dashboard__summary">
+                <div class="camera-dashboard__summary-grid">
+                    <div class="camera-dashboard__summary-card">
+                        <span>전체 장치</span>
+                        <strong id="cameraSummaryTotal">3</strong>
+                    </div>
+                    <div class="camera-dashboard__summary-card">
+                        <span>카메라 설정 완료</span>
+                        <strong id="cameraSummaryConfigured">2</strong>
+                    </div>
+                    <div class="camera-dashboard__summary-card">
+                        <span>미설정 장치</span>
+                        <strong id="cameraSummaryUnconfigured">1</strong>
+                    </div>
+                </div>
+            </article>
+
+            <section class="camera-dashboard__layout">
+                <article class="panel camera-dashboard__devices">
+                    <div class="panel__header">
+                        <div>
+                            <p class="panel__eyebrow">Device List</p>
+                            <h2>장치 선택</h2>
+                        </div>
+                    </div>
+
+                    <div class="camera-device-list">
+                        <button type="button"
+                                class="camera-device-item is-active"
+                                data-device-button="true"
+                                data-device-id="15"
+                                data-device-name="남용인"
+                                data-device-address="경기 용인시 처인구 원삼면 학일리 산 49-23"
+                                data-camera-name="남용인 CCTV"
+                                data-camera-label="남용인 CCTV"
+                                data-camera-configured="true"
+                                data-camera-enabled="true"
+                                data-camera-base-url="http://localhost:13500">
+                            <span class="camera-device-item__head">
+                                <strong>남용인</strong>
+                                <span class="status-chip status-chip--running">카메라 연결</span>
+                            </span>
+                            <span class="camera-device-item__address">경기 용인시 처인구 원삼면 학일리 산 49-23</span>
+                            <small>http://localhost:13500</small>
+                        </button>
+
+                        <button type="button"
+                                class="camera-device-item"
+                                data-device-button="true"
+                                data-device-id="16"
+                                data-device-name="백암 교차로"
+                                data-device-address="경기 용인시 처인구 백암면 백암리 391-2"
+                                data-camera-name="백암 교차로 CCTV"
+                                data-camera-label="백암 교차로 CCTV"
+                                data-camera-configured="true"
+                                data-camera-enabled="true"
+                                data-camera-base-url="http://localhost:13510">
+                            <span class="camera-device-item__head">
+                                <strong>백암 교차로</strong>
+                                <span class="status-chip status-chip--running">카메라 연결</span>
+                            </span>
+                            <span class="camera-device-item__address">경기 용인시 처인구 백암면 백암리 391-2</span>
+                            <small>http://localhost:13510</small>
+                        </button>
+
+                        <button type="button"
+                                class="camera-device-item"
+                                data-device-button="true"
+                                data-device-id="17"
+                                data-device-name="양지 터널"
+                                data-device-address="경기 용인시 처인구 양지면 주북리 611"
+                                data-camera-name="양지 터널 CCTV"
+                                data-camera-label=""
+                                data-camera-configured="false"
+                                data-camera-enabled="false"
+                                data-camera-base-url="">
+                            <span class="camera-device-item__head">
+                                <strong>양지 터널</strong>
+                                <span class="status-chip status-chip--idle">미설정</span>
+                            </span>
+                            <span class="camera-device-item__address">경기 용인시 처인구 양지면 주북리 611</span>
+                            <small>카메라 기본 URL이 설정되지 않았습니다.</small>
+                        </button>
+                    </div>
+                </article>
+
+                <div class="camera-dashboard__viewer">
+                    <section class="camera-dashboard__viewer-top">
+                        <article class="panel camera-stage">
+                            <div class="panel__header">
+                                <div>
+                                    <p class="panel__eyebrow">Live Stream</p>
+                                    <h2 id="cameraViewerTitle">남용인 CCTV</h2>
+                                    <p class="panel__subtitle" id="cameraViewerSubtitle">경기 용인시 처인구 원삼면 학일리 산 49-23</p>
+                                </div>
+                                <div class="camera-stage__status">
+                                    <span class="status-chip status-chip--running" id="cameraConfiguredStatus">카메라 사용</span>
+                                </div>
+                            </div>
+
+                            <div class="camera-stage__viewer">
+                                <div class="camera-stage__video">
+                                    <video id="cameraVideoPlayer" class="is-hidden" controls muted playsinline></video>
+                                    <div class="camera-stage__empty" id="cameraVideoPlaceholder">
+                                        <strong>카메라 프리뷰 세션을 준비했습니다.</strong>
+                                        <p>정적 UI에서는 mock 세션 응답과 상태 변화만 시뮬레이션합니다.</p>
+                                    </div>
+                                </div>
+                                <p class="detail-note" id="cameraPlayerStatus">남용인 CCTV mock 세션이 준비되었습니다.</p>
+                            </div>
+                        </article>
+
+                        <article class="panel camera-settings">
+                            <div class="panel__header">
+                                <div>
+                                    <p class="panel__eyebrow">Camera Settings</p>
+                                    <h2>카메라 설정</h2>
+                                    <p class="panel__subtitle">선택 장치의 카메라 사용 여부와 기본 URL을 바로 수정합니다.</p>
+                                </div>
+                            </div>
+
+                            <form class="camera-settings__form" id="cameraSettingsForm">
+                                <input type="hidden" id="cameraSettingsDeviceId" value="15">
+
+                                <label class="form-field">
+                                    <span>선택 장치</span>
+                                    <input type="text" id="cameraSettingsDeviceName" value="남용인" readonly>
+                                </label>
+
+                                <div class="form-field form-field--checkbox">
+                                    <span>카메라 사용</span>
+                                    <label class="checkbox-field" for="cameraSettingsEnabled">
+                                        <input type="checkbox" id="cameraSettingsEnabled" checked>
+                                        <small>체크 시 영상 조회와 PTZ를 활성화합니다.</small>
+                                    </label>
+                                </div>
+
+                                <label class="form-field">
+                                    <span>카메라 표시명</span>
+                                    <input type="text" id="cameraSettingsLabel" value="남용인 CCTV" placeholder="백암 교차로 CCTV">
+                                </label>
+
+                                <label class="form-field">
+                                    <span>카메라 기본 URL</span>
+                                    <input type="text" id="cameraSettingsBaseUrl" value="http://localhost:13500" placeholder="http://localhost:13500">
+                                    <small>C# 카메라 브리지 서버 주소를 입력합니다.</small>
+                                </label>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="button button--primary" id="cameraSettingsSubmit">설정 저장</button>
+                                </div>
+                            </form>
+                        </article>
+                    </section>
+
+                    <section class="camera-dashboard__subgrid">
+                        <article class="panel camera-snapshot">
+                            <div class="panel__header">
+                                <div>
+                                    <p class="panel__eyebrow">Snapshot</p>
+                                    <h2>스냅샷</h2>
+                                </div>
+                                <button id="cameraSnapshotButton" type="button" class="button button--ghost">스냅샷 요청</button>
+                            </div>
+                            <p class="detail-note" id="cameraSnapshotStatus">장치를 선택하면 현재 프레임 이미지를 요청할 수 있습니다.</p>
+                            <div class="camera-snapshot__frame">
+                                <img id="cameraSnapshotImage" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="카메라 스냅샷" class="camera-snapshot__image is-hidden">
+                                <div class="camera-snapshot__placeholder" id="cameraSnapshotPlaceholder">
+                                    아직 가져온 스냅샷이 없습니다.
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="panel camera-ptz">
+                            <div class="panel__header">
+                                <div>
+                                    <p class="panel__eyebrow">PTZ</p>
+                                    <h2>리모컨</h2>
+                                </div>
+                            </div>
+                            <p class="detail-note" id="cameraPtzStatus">장치를 선택하면 방향 및 줌 제어를 전송할 수 있습니다.</p>
+                            <div class="camera-ptz__layout">
+                                <div class="camera-ptz__pad">
+                                    <div></div>
+                                    <button type="button" class="button button--ghost" data-ptz-command="/ptz/up">▲</button>
+                                    <div></div>
+                                    <button type="button" class="button button--ghost" data-ptz-command="/ptz/left">◀</button>
+                                    <button type="button" class="button button--danger" data-ptz-command="/ptz/stop">STOP</button>
+                                    <button type="button" class="button button--ghost" data-ptz-command="/ptz/right">▶</button>
+                                    <div></div>
+                                    <button type="button" class="button button--ghost" data-ptz-command="/ptz/down">▼</button>
+                                    <div></div>
+                                </div>
+                                <div class="camera-ptz__zoom">
+                                    <button type="button" class="button button--primary" data-ptz-command="/ptz/zoom/in">Zoom+</button>
+                                    <button type="button" class="button button--primary" data-ptz-command="/ptz/zoom/out">Zoom-</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="panel camera-debug">
+                            <div class="panel__header">
+                                <div>
+                                    <p class="panel__eyebrow">Response</p>
+                                    <h2>세션 응답</h2>
+                                </div>
+                            </div>
+                            <pre id="cameraResultBox">아직 요청하지 않았습니다.</pre>
+                        </article>
+                    </section>
+                </div>
+            </section>
+        </section>
+    </main>
+</div>
+
+<script>
+    window.cameraDashboardInitialState = {
+        selectedDeviceId: 15
+    };
+    window.cameraDashboardPreviewState = {
+        devices: [
+            {
+                id: 15,
+                name: "남용인",
+                address: "경기 용인시 처인구 원삼면 학일리 산 49-23",
+                cameraName: "남용인 CCTV",
+                cameraLabel: "남용인 CCTV",
+                cameraEnabled: true,
+                cameraBaseUrl: "http://localhost:13500",
+                snapshotTitle: "남용인 스냅샷",
+                snapshotCaption: "최근 결빙 주의 구간 프레임",
+                sessionResponse: {
+                    success: true,
+                    viewerId: "mock-15",
+                    hlsReady: true,
+                    hlsUrl: "mock://namyongin/live.m3u8",
+                    cameraResponse: {
+                        message: "Mock camera session connected"
+                    }
+                }
+            },
+            {
+                id: 16,
+                name: "백암 교차로",
+                address: "경기 용인시 처인구 백암면 백암리 391-2",
+                cameraName: "백암 교차로 CCTV",
+                cameraLabel: "백암 교차로 CCTV",
+                cameraEnabled: true,
+                cameraBaseUrl: "http://localhost:13510",
+                snapshotTitle: "백암 교차로 스냅샷",
+                snapshotCaption: "교차로 시야 확인 프레임",
+                sessionResponse: {
+                    success: true,
+                    viewerId: "mock-16",
+                    hlsReady: true,
+                    hlsUrl: "mock://baegam/live.m3u8",
+                    cameraResponse: {
+                        message: "Mock camera session connected"
+                    }
+                }
+            },
+            {
+                id: 17,
+                name: "양지 터널",
+                address: "경기 용인시 처인구 양지면 주북리 611",
+                cameraName: "양지 터널 CCTV",
+                cameraLabel: "",
+                cameraEnabled: false,
+                cameraBaseUrl: "",
+                snapshotTitle: "양지 터널 스냅샷",
+                snapshotCaption: "카메라 미설정 상태",
+                sessionResponse: {
+                    success: false,
+                    message: "카메라 기본 URL이 설정되지 않았습니다."
+                }
+            }
+        ]
+    };
+</script>
+</body>
+</html>
